@@ -18,7 +18,9 @@ namespace PoWebApi.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            //when created, using Employee
             builder.Entity<Employee>(e =>{
+                //Makes sure the Login is unique
                 e.HasIndex(p => p.Login).IsUnique();
             });
         }
