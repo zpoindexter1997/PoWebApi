@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PoWebApi.Data;
 
 namespace PoWebApi.Migrations
 {
     [DbContext(typeof(PoContext))]
-    partial class PoContextModelSnapshot : ModelSnapshot
+    [Migration("20210603152626_Added purchaseorders class")]
+    partial class Addedpurchaseordersclass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,29 +56,6 @@ namespace PoWebApi.Migrations
                         .IsUnique();
 
                     b.ToTable("Employee");
-                });
-
-            modelBuilder.Entity("PoWebApi.Models.Item", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(7,2)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("PoWebApi.Models.PurchaseOrder", b =>
